@@ -56,15 +56,9 @@ class RecordProcessor extends IRecordProcessor {
     
     val ue = new String(new BASE64Decoder().decodeBuffer(data.ue_px))
 
-    println(s"CX $cx")
-    println(s"UE $ue")
-
     val context = Formats.parseContext(cx)
     val event = Formats.parseEvent(ue)
-    
-    println(s"CONTEXT: $context")
-    println(s"EVENT: $event")
-    
+
     if (context != null && event != null) {
       val appId = Formats.parseApplicationId(data.aid)
       var params = event.parameters;
